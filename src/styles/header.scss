@@ -1,15 +1,28 @@
 header.header {
-  background: var(--blue);
-  padding-top: 2rem;
-  
-  > div {
-    max-width: 1120px;
-    margin: 0 auto;
+  height: 60px;
 
-    padding: 2rem 1rem 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--bg-light);
+
+  padding: 0 2rem;
+
+  border-radius: 8px 8px 0 0;
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+
+    p {
+      margin-left: 10px;
+      color: #f9f9f9;
+      font-family: "Inter", sans-serif;
+    }
   }
 }

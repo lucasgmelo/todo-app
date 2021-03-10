@@ -1,12 +1,8 @@
 :root {
-  --blue: #273FAD;
-  --green: #3FAD27;
-  --red: 	#ad273f;
-  --background: #EBEBEB;
-  --shapes: #FFFFFF;
-  --text-title: #3D3D4D;
-  --text: #1C1C29;
-  --text-light: #A09CB1;
+  --bg: #1e1e26;
+  --bg-light: #1a1a21;
+  --bg-dark: #16161c;
+  --gradient: linear-gradient(249.73deg, #f29682 0%, #ee69ac 50%, #cb4bcf 100%);
 }
 
 * {
@@ -16,12 +12,14 @@
 }
 
 body {
-  font: 16px "Poppins", Arial, sans-serif;
-  color: #121214;
+  font: 16px "Inter", sans-serif;
+  color: #f9f9f9;
+  background: var(--bg);
 }
 
-input, textarea {
-  font-family: "Poppins";
+input,
+textarea {
+  font-family: "Inter";
 }
 
 .container {
@@ -30,6 +28,6 @@ input, textarea {
   padding: 2.5rem 1rem;
 }
 
-button, .checkmark {
+button {
   cursor: pointer;
 }

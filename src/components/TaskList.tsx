@@ -46,11 +46,10 @@ export function TaskList() {
   }
 
   return (
-    <section className="task-list container">
+    <section className="task-list">
       <header>
-        <h2>Minhas tasks</h2>
-
-        <div className="input-group">
+        <h1>Olá, Lucas Melo</h1>
+        {/* <div className="input-group">
           <input
             type="text"
             placeholder="Adicionar novo todo"
@@ -64,11 +63,41 @@ export function TaskList() {
           >
             <FiCheckSquare size={16} color="#fff" />
           </button>
-        </div>
+        </div> */}
       </header>
 
       <main>
-        <ul>
+        <section className="main-card">
+          <div className="progress-data">
+            <p>100%</p>
+          </div>
+          <div className="progress-text">
+            <strong>Seu progresso</strong>
+            <div>
+              <strong>10/10</strong>
+              <span> tasks feitas</span>
+            </div>
+          </div>
+        </section>
+        <section className="tasks-container">
+          <h2>minhas tasks</h2>
+          <ul>
+            <li>
+              <div className="completed" data-testid="task">
+                <label className="checkbox-container">
+                  <input type="checkbox" readOnly />
+                  <span className="checkmark"></span>
+                </label>
+                <p>Terminar o design</p>
+              </div>
+
+              <button type="button" data-testid="remove-task-button">
+                <FiTrash size={16} />
+              </button>
+            </li>
+          </ul>
+        </section>
+        {/* <ul>
           {tasks.map((task) => (
             <li key={task.id}>
               <div
@@ -96,7 +125,7 @@ export function TaskList() {
               </button>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </main>
     </section>
   );
