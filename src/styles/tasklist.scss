@@ -1,5 +1,5 @@
 section.task-list {
-  background: var(--bg-light);
+  background: var(--bg-dark);
   border-radius: 0 0 8px 8px;
 
   padding: 1rem 2rem;
@@ -13,48 +13,6 @@ section.task-list {
     h1 {
       color: var(--text-title);
       font-size: 1.375rem;
-    }
-
-    .input-group {
-      display: flex;
-      gap: 0.25rem;
-      align-items: center;
-
-      background: #fff;
-      font-size: 16px;
-
-      input {
-        flex: 1;
-        background: var(--background);
-        border: 0;
-        color: var(--text);
-        padding: 12px 24px;
-
-        border-radius: 8px;
-        border: 0;
-
-        &::placeholder {
-          color: var(--text-light);
-        }
-      }
-
-      button {
-        font-weight: 600;
-        border-radius: 8px;
-        border: 0;
-        background: var(--green);
-        color: #fff;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        padding: 14px;
-        transition: filter 0.2s;
-
-        &:hover {
-          filter: brightness(0.95);
-        }
-      }
     }
   }
 
@@ -161,7 +119,7 @@ section.task-list {
 
                 &:checked {
                   & ~ .checkmark {
-                    background-color: var(--blue);
+                    background: var(--gradient);
                   }
 
                   & ~ .checkmark:after {
@@ -177,8 +135,9 @@ section.task-list {
                 width: 20px;
                 height: 20px;
                 background: var(--gradient);
-                border: 1px solid inherit;
                 border-radius: 50%;
+                z-index: 1;
+                cursor: pointer;
 
                 &:after {
                   content: "";
@@ -214,4 +173,62 @@ section.task-list {
       }
     }
   }
+}
+
+.input-group {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+
+  font-size: 16px;
+
+  position: fixed;
+
+  right: 20px;
+  bottom: 40px;
+
+  input {
+    background: var(--bg-light);
+    color: #f9f9f9;
+    padding: 14px 24px;
+    margin-right: 10px;
+
+    border-radius: 8px;
+    border: 0;
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+
+  button {
+    font-weight: 500;
+    font-size: 1.5rem;
+
+    border: 0;
+    border-radius: 50%;
+    outline: none;
+
+    width: 40px;
+    height: 40px;
+
+    background: var(--gradient);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+.input-off {
+  opacity: 0;
+
+  pointer-events: none;
 }
