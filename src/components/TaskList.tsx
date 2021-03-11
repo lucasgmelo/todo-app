@@ -14,11 +14,7 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [addTask, setAddTask] = useState(false);
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
-  const large = useMedia("(max-width: 62.5rem)");
-
-  useEffect(() => {
-    console.log(large);
-  }, [large]);
+  const large = useMedia("(min-width: 62.5rem)");
 
   useEffect(() => {
     getCompletedTasks();
@@ -59,16 +55,26 @@ export function TaskList() {
     setTasks(filteredTasks);
   }
 
+  function getProgress(complete: number, total: number) {
+    const percentual = Math.floor((complete / total) * 100);
+    if (Number.isNaN(percentual)) return 0;
+    return percentual;
+  }
+
   return (
     <section className="task-list">
-      <header>
-        <h1>Olá, Lucas Melo</h1>
-      </header>
-
-      <main>
+      <header className={large && "desktop-bg"}>
+        <div>
+          {large && (
+            <div>
+              <img src="icons/profile.svg" alt="" />
+            </div>
+          )}
+          <h1>Olá, Lucas Melo!</h1>
+        </div>
         <section className="main-card">
           <div className="progress-data">
-            <p>{Math.floor((completedTasks.length / tasks.length) * 100)}%</p>
+            <p>{getProgress(completedTasks.length, tasks.length)}%</p>
           </div>
           <div className="progress-text">
             <strong>Seu progresso</strong>
@@ -80,38 +86,24 @@ export function TaskList() {
             </div>
           </div>
         </section>
+        {large && (
+          <footer>
+            <img src="icons/medium_logo.svg" alt="" />
+            <div>
+              <strong>do it!</strong>
+              <p>seu to do app favorito :)</p>
+            </div>
+          </footer>
+        )}
+      </header>
+      <main>
         <section className="tasks-container">
-          <h2>minhas tasks</h2>
-          <ul>
-            {tasks.map((task) => (
-              <li>
-                <div
-                  className={task.isComplete ? "completed" : ""}
-                  data-testid="task"
-                >
-                  <label className="checkbox-container">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={task.isComplete}
-                      onClick={() => handleToggleTaskCompletion(task.id)}
-                    />
-                    <span className="checkmark"></span>
-                  </label>
-                  <p>{task.title}</p>
-                </div>
-
-                <button
-                  type="button"
-                  data-testid="remove-task-button"
-                  onClick={() => handleRemoveTask(task.id)}
-                >
-                  <FiTrash size={16} />
-                </button>
-              </li>
-            ))}
-          </ul>
-          <div className="input-group">
+          <h2 className={large && "desktop-title"}>Minhas tasks</h2>
+          <div
+            className={
+              large ? `${"input-group"} ${"desktop-button"}` : "input-group"
+            }
+          >
             <input
               type="text"
               placeholder="Adicionar nova task"
@@ -142,6 +134,35 @@ export function TaskList() {
               </button>
             )}
           </div>
+          <ul>
+            {tasks.map((task) => (
+              <li>
+                <div
+                  className={task.isComplete ? "completed" : ""}
+                  data-testid="task"
+                >
+                  <label className="checkbox-container">
+                    <input
+                      type="checkbox"
+                      readOnly
+                      checked={task.isComplete}
+                      onClick={() => handleToggleTaskCompletion(task.id)}
+                    />
+                    <span className="checkmark"></span>
+                  </label>
+                  <p>{task.title}</p>
+                </div>
+
+                <button
+                  type="button"
+                  data-testid="remove-task-button"
+                  onClick={() => handleRemoveTask(task.id)}
+                >
+                  <FiTrash size={16} />
+                </button>
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
     </section>

@@ -2,27 +2,35 @@ section.task-list {
   background: var(--bg-dark);
   border-radius: 0 0 8px 8px;
 
-  padding: 1rem 2rem;
+  // padding: 1rem 2rem;
+
+  min-height: 80vh;
+
+  @media (min-width: 62.5rem) {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
 
   header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 
-    h1 {
-      color: var(--text-title);
-      font-size: 1.375rem;
+    padding: 0 1rem;
+
+    & > div {
+      h1 {
+        font-size: 1.375rem;
+        margin: 1.5rem 0;
+      }
     }
-  }
-
-  main {
-    margin-top: 2rem;
 
     .main-card {
       height: 100px;
       width: 100%;
 
+      margin-top: -1rem;
       padding: 1rem;
       border-radius: 8px;
 
@@ -59,6 +67,28 @@ section.task-list {
       }
     }
 
+    footer {
+      margin-top: 1rem;
+      display: flex;
+
+      div {
+        margin-left: 1rem;
+
+        strong {
+          font-size: 1.375rem;
+        }
+
+        p {
+          margin-top: 0.1rem;
+        }
+      }
+    }
+  }
+
+  main {
+    margin-top: 2rem;
+    padding: 0 1rem;
+
     .tasks-container {
       padding: 1.5rem 0;
 
@@ -70,6 +100,13 @@ section.task-list {
         font-weight: 300;
         font-size: 1rem;
         letter-spacing: 3px;
+      }
+
+      h2.desktop-title {
+        font-weight: 700;
+        text-transform: initial;
+        letter-spacing: normal;
+        font-size: 1.375rem;
       }
 
       ul {
@@ -177,15 +214,15 @@ section.task-list {
 
 .input-group {
   display: flex;
-  gap: 0.25rem;
   align-items: center;
+  justify-content: flex-end;
 
   font-size: 16px;
 
   position: fixed;
 
   right: 20px;
-  bottom: 40px;
+  bottom: 35px;
 
   input {
     background: var(--bg-light);
@@ -227,8 +264,16 @@ section.task-list {
   }
 }
 
+.desktop-button {
+  position: relative;
+}
+
 .input-off {
   opacity: 0;
 
   pointer-events: none;
+}
+
+.desktop-bg {
+  background: var(--bg-light);
 }
