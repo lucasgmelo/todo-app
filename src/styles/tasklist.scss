@@ -39,11 +39,19 @@ section.task-list {
       display: flex;
       align-items: center;
 
+      position: relative;
+
+      & > canvas {
+        position: absolute;
+        left: -70px;
+        top: 11px;
+      }
+
       .progress-text {
-        margin-left: 1.5rem;
+        margin-left: 6.5rem;
 
         height: 70%;
-
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

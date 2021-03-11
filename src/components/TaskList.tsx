@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FiTrash, FiCheckSquare } from "react-icons/fi";
 import useMedia from "../hooks/useMedia";
 import "../styles/tasklist.scss";
+import { Doughnut } from "react-chartjs-2";
 
 interface Task {
   id: number;
@@ -14,11 +15,35 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [addTask, setAddTask] = useState(false);
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
+  const [percentual, setPercentual] = useState(0);
   const large = useMedia("(min-width: 62.5rem)");
+
+  const data = (canvas: any) => {
+    const ctx = canvas.getContext("2d");
+    const gradient = ctx.createLinearGradient(0, 0, 100, 200);
+    gradient.addColorStop(0, "#f29682 ");
+    gradient.addColorStop(1, "#ee69ac");
+
+    return {
+      datasets: [
+        {
+          data: [percentual, 100 - percentual],
+          backgroundColor: [gradient, "transparent"],
+          borderColor: [gradient, "transparent"],
+        },
+      ],
+    };
+  };
 
   useEffect(() => {
     getCompletedTasks();
   }, [tasks]);
+
+  useEffect(() => {
+    setPercentual(getProgress(completedTasks.length, tasks.length));
+  }, [handleToggleTaskCompletion]);
+
+  useEffect(() => {}, []);
 
   function getCompletedTasks() {
     const tasksCompleted = tasks.filter((task) => task.isComplete !== false);
@@ -56,9 +81,9 @@ export function TaskList() {
   }
 
   function getProgress(complete: number, total: number) {
-    const percentual = Math.floor((complete / total) * 100);
-    if (Number.isNaN(percentual)) return 0;
-    return percentual;
+    const myPercentual = Math.floor((complete / total) * 100);
+    if (Number.isNaN(myPercentual)) return 0;
+    return myPercentual;
   }
 
   return (
@@ -73,9 +98,14 @@ export function TaskList() {
           <h1>Olá, Lucas Melo!</h1>
         </div>
         <section className="main-card">
-          <div className="progress-data">
-            <p>{getProgress(completedTasks.length, tasks.length)}%</p>
-          </div>
+          <Doughnut
+            data={data}
+            options={{
+              cutoutPercentage: 85,
+              events: ["none"],
+              maintainAspectRatio: false,
+            }}
+          />
           <div className="progress-text">
             <strong>Seu progresso</strong>
             <div>
