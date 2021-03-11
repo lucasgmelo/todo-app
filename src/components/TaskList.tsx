@@ -13,11 +13,21 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [addTask, setAddTask] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const large = useMedia("(max-width: 62.5rem)");
 
   useEffect(() => {
     console.log(large);
   }, [large]);
+
+  useEffect(() => {
+    getCompletedTasks();
+  }, [tasks]);
+
+  function getCompletedTasks() {
+    const tasksCompleted = tasks.filter((task) => task.isComplete !== false);
+    setCompletedTasks(tasksCompleted);
+  }
 
   function handleCreateNewTask() {
     if (!newTaskTitle) return;
@@ -46,7 +56,6 @@ export function TaskList() {
 
   function handleRemoveTask(id: number) {
     const filteredTasks = tasks.filter((task) => task.id !== id);
-
     setTasks(filteredTasks);
   }
 
@@ -59,12 +68,14 @@ export function TaskList() {
       <main>
         <section className="main-card">
           <div className="progress-data">
-            <p>100%</p>
+            <p>{Math.floor((completedTasks.length / tasks.length) * 100)}%</p>
           </div>
           <div className="progress-text">
             <strong>Seu progresso</strong>
             <div>
-              <strong>0/{tasks.length}</strong>
+              <strong>
+                {completedTasks.length}/{tasks.length}
+              </strong>
               <span> tasks feitas</span>
             </div>
           </div>
