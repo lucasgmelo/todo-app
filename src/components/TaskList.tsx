@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiTrash, FiCheckSquare } from "react-icons/fi";
+import useMedia from "../hooks/useMedia";
 import "../styles/tasklist.scss";
 
 interface Task {
@@ -12,6 +13,11 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [addTask, setAddTask] = useState(false);
+  const large = useMedia("(max-width: 62.5rem)");
+
+  useEffect(() => {
+    console.log(large);
+  }, [large]);
 
   function handleCreateNewTask() {
     if (!newTaskTitle) return;
