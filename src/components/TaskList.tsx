@@ -3,6 +3,7 @@ import { FiTrash, FiCheckSquare } from "react-icons/fi";
 import useMedia from "../hooks/useMedia";
 import "../styles/tasklist.scss";
 import { Doughnut } from "react-chartjs-2";
+import axios from "axios";
 
 interface Task {
   id: number;
@@ -12,7 +13,7 @@ interface Task {
 
 interface TaskListProps {
   user: string;
-  userPhoto: string;
+  github: string;
 }
 
 export function TaskList(props: TaskListProps) {
@@ -22,6 +23,7 @@ export function TaskList(props: TaskListProps) {
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const [percentual, setPercentual] = useState(0);
   const large = useMedia("(min-width: 62.5rem)");
+  const [photo, setPhoto] = useState("");
 
   const data = (canvas: any) => {
     const ctx = canvas.getContext("2d");
@@ -48,7 +50,23 @@ export function TaskList(props: TaskListProps) {
     setPercentual(getProgress(completedTasks.length, tasks.length));
   }, [handleToggleTaskCompletion]);
 
-  useEffect(() => {}, []);
+  const getUser = async (user: string) => {
+    const res = await axios
+      .get(
+        `
+    https://api.github.com/users/${user}`
+      )
+      .then((res) => {
+        setPhoto(res.data.avatar_url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUser(props.github);
+  }, []);
 
   function getCompletedTasks() {
     const tasksCompleted = tasks.filter((task) => task.isComplete !== false);
@@ -100,7 +118,7 @@ export function TaskList(props: TaskListProps) {
               <img src="icons/profile.svg" alt="" />
             </div>
           )}
-          <h1>Olá, Lucas Melo!</h1>
+          <h1>Olá, {props.user}!</h1>
         </div>
         <section className="main-card">
           <Doughnut
@@ -123,7 +141,7 @@ export function TaskList(props: TaskListProps) {
         </section>
         {large && (
           <footer>
-            <img src="icons/medium_logo.svg" alt="" />
+            <img src={photo} alt="" />
             <div>
               <strong>do it!</strong>
               <p>seu to do app favorito :)</p>

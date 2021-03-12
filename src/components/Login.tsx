@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 import useMedia from "../hooks/useMedia";
 import "../styles/login.scss";
@@ -8,8 +9,6 @@ interface LoginProps {
 
 export default function Login(props: LoginProps) {
   const large = useMedia("(min-width: 52.5rem)");
-
-  useEffect(() => {}, []);
 
   return (
     <div className="loginContainer">
@@ -28,7 +27,7 @@ export default function Login(props: LoginProps) {
         <label htmlFor="user">Insira seu nome</label>
         <input required id="user" type="text" />
         <label htmlFor="github">Github — opcional</label>
-        <input required id="github" type="text" />
+        <input id="github" type="text" />
         <button type="submit">Continuar</button>
       </form>
     </div>

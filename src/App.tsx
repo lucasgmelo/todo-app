@@ -6,16 +6,16 @@ import Login from "./components/Login";
 
 export function App() {
   const [login, setLogin] = useState(true);
-  const [user, setUser] = useState("");
-  const [userPhoto, setUserPhoto] = useState("");
+  const [user, setUser] = useState("Lucas Melo");
+  const [github, setGithub] = useState("");
 
   function changeScreen() {
     setLogin(!login);
   }
 
-  function getUserData(myUser: string, photo: string) {
+  function getUserData(myUser: string, myGithub: string) {
     setUser(myUser);
-    setUserPhoto(photo);
+    setGithub(myGithub);
   }
 
   return (
@@ -25,7 +25,7 @@ export function App() {
       ) : (
         <>
           <Header changeScreen={changeScreen} />
-          <TaskList user={user} userPhoto={userPhoto} />
+          <TaskList user={user} github={github} />
         </>
       )}
     </div>
