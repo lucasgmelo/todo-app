@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header className="header">
       <div>
-        <button>
+        <button type="button">
           <img src="icons/exit.svg" alt="Sair" />
           <p>Sair</p>
         </button>

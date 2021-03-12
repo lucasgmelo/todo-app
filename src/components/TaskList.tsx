@@ -101,7 +101,7 @@ export function TaskList() {
           <Doughnut
             data={data}
             options={{
-              cutoutPercentage: 85,
+              cutoutPercentage: 80,
               events: ["none"],
               maintainAspectRatio: false,
             }}

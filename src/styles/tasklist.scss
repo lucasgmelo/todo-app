@@ -45,6 +45,29 @@ section.task-list {
         position: absolute;
         left: -70px;
         top: 11px;
+        max-width: 80%;
+
+        @media (max-width: 62.4rem) {
+          position: fixed;
+          top: 167px;
+          left: -27%;
+        }
+
+        @media (max-width: 900px) {
+          left: -25%;
+        }
+
+        @media (max-width: 775px) {
+          left: -22.5%;
+        }
+
+        @media (max-width: 660px) {
+          left: -19%;
+        }
+
+        @media (max-width: 540px) {
+          left: -16%;
+        }
       }
 
       .progress-text {
@@ -55,6 +78,8 @@ section.task-list {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        position: relative;
       }
 
       .progress-data {
