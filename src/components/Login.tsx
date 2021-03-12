@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import useMedia from "../hooks/useMedia";
 import "../styles/login.scss";
 
-export default function Login() {
+interface LoginProps {
+  changeScreen: () => void;
+  getUserData: () => void;
+}
+
+export default function Login(props: LoginProps) {
   const large = useMedia("(min-width: 52.5rem)");
+
+  useEffect(() => {}, []);
 
   return (
     <div className="loginContainer">
