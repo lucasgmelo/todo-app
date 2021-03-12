@@ -1,10 +1,14 @@
 import "../styles/header.scss";
 
-export function Header(changeScreen: () => void) {
+interface HeaderProps {
+  changeScreen: () => void;
+}
+
+export function Header(props: HeaderProps) {
   return (
     <header className="header">
       <div>
-        <button type="button">
+        <button type="button" onClick={props.changeScreen}>
           <img src="icons/exit.svg" alt="Sair" />
           <p>Sair</p>
         </button>

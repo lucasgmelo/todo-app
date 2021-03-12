@@ -10,7 +10,12 @@ interface Task {
   isComplete: boolean;
 }
 
-export function TaskList() {
+interface TaskListProps {
+  user: string;
+  userPhoto: string;
+}
+
+export function TaskList(props: TaskListProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [addTask, setAddTask] = useState(false);

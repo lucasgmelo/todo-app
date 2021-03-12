@@ -4,19 +4,6 @@ import "./styles/global.scss";
 import { useState } from "react";
 import Login from "./components/Login";
 
-interface HeaderProps {
-  changeScreen: () => void;
-}
-
-interface LoginProps extends HeaderProps {
-  getUserData: () => void;
-}
-
-interface TaskListProps {
-  user: string;
-  userPhoto: string;
-}
-
 export function App() {
   const [login, setLogin] = useState(true);
   const [user, setUser] = useState("");
@@ -34,14 +21,11 @@ export function App() {
   return (
     <div className="container">
       {login ? (
-        <Login<LoginProps>
-          changeScreen={changeScreen}
-          getUserData={getUserData}
-        />
+        <Login changeScreen={changeScreen} />
       ) : (
         <>
-          <Header<HeaderProps> changeScreen={changeScreen} />
-          <TaskList<TaskListProps> user={user} userPhoto={userPhoto} />
+          <Header changeScreen={changeScreen} />
+          <TaskList user={user} userPhoto={userPhoto} />
         </>
       )}
     </div>

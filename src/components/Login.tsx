@@ -4,7 +4,6 @@ import "../styles/login.scss";
 
 interface LoginProps {
   changeScreen: () => void;
-  getUserData: () => void;
 }
 
 export default function Login(props: LoginProps) {
@@ -20,13 +19,18 @@ export default function Login(props: LoginProps) {
       ) : (
         <img src="icons/mobile_logo.svg" alt="" />
       )}
-      <div>
-        <label for="user">Insira seu nome</label>
-        <input id="user" type="text" />
-        <label for="github">Github — opcional</label>
-        <input id="github" type="text" />
-        <button>Continuar</button>
-      </div>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          props.changeScreen();
+        }}
+      >
+        <label htmlFor="user">Insira seu nome</label>
+        <input required id="user" type="text" />
+        <label htmlFor="github">Github — opcional</label>
+        <input required id="github" type="text" />
+        <button type="submit">Continuar</button>
+      </form>
     </div>
   );
 }
