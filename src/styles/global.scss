@@ -9,6 +9,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 20px (var(--bg));
+    margin-left: 5px;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 10px;
+  }
 }
 
 body {
@@ -17,6 +35,7 @@ body {
   background: var(--bg);
 
   max-height: 100vh;
+  overflow: hidden;
 }
 
 input,
