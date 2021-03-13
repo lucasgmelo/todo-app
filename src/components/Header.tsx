@@ -10,7 +10,7 @@ export function Header(props: HeaderProps) {
       <div>
         <button type="button" onClick={props.changeScreen}>
           <img
-            src="exit.svg"
+            src="./exit.svg"
             alt="Sair"
             onClick={() => {
               localStorage.removeItem("user");
@@ -20,7 +20,7 @@ export function Header(props: HeaderProps) {
           <p>Sair</p>
         </button>
       </div>
-      <img src="small_logo.svg" alt="Logo" />
+      <img src="./small_logo.svg" alt="Logo" />
     </header>
   );
 }
