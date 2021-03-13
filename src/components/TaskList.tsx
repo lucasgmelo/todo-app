@@ -122,7 +122,7 @@ export function TaskList(props: TaskListProps) {
         <div>
           {large && (
             <div className="profile-photo">
-              <img src={photo !== "" ? photo : "profile.svg"} alt="" />
+              <img src={photo !== "" ? photo : "/profile.svg"} alt="" />
             </div>
           )}
           <h1>Olá, {props.user}!</h1>
