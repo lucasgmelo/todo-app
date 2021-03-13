@@ -16,9 +16,9 @@ export default function Login(props: LoginProps) {
     <div className="loginContainer">
       <h1>do it!</h1>
       {large ? (
-        <img src="desktop_logo.svg" alt="" />
+        <img src="./desktop_logo.svg" alt="" />
       ) : (
-        <img src="mobile_logo.svg" alt="" />
+        <img src="./mobile_logo.svg" alt="" />
       )}
       <form
         onSubmit={(event) => {
