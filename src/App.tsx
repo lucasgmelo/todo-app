@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import Login from "./components/Login";
 
 export function App() {
-  const [login, setLogin] = useState(true);
-  const [user, setUser] = useState("");
-  const [github, setGithub] = useState("");
+  const [login, setLogin] = useState<boolean | null>(true);
+  const [user, setUser] = useState<string | null>("");
+  const [github, setGithub] = useState<string | null>("");
 
   function changeScreen() {
     setLogin(!login);
@@ -37,7 +37,7 @@ export function App() {
     if (userLocalStorage !== "") {
       setUser(userLocalStorage);
       setGithub(githubLocalStorage);
-      changeScreen();
+      setLogin(false);
     }
   }, []);
 
