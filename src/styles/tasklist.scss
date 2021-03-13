@@ -128,12 +128,14 @@ section.task-list {
     .tasks-container {
       padding: 1.5rem 0;
       max-height: 50vh;
+      height: 50vh;
 
       display: flex;
       flex-direction: column;
 
       @media (min-width: 62.5rem) {
         max-height: 75vh;
+        height: 75vh;
       }
 
       h2 {
