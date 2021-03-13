@@ -9,7 +9,14 @@ export function Header(props: HeaderProps) {
     <header className="header">
       <div>
         <button type="button" onClick={props.changeScreen}>
-          <img src="exit.svg" alt="Sair" />
+          <img
+            src="exit.svg"
+            alt="Sair"
+            onClick={() => {
+              localStorage.removeItem("user");
+              localStorage.removeItem("github");
+            }}
+          />
           <p>Sair</p>
         </button>
       </div>

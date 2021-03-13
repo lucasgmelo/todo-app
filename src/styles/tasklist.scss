@@ -1,10 +1,8 @@
 section.task-list {
   background: var(--bg-dark);
   border-radius: 0 0 8px 8px;
-
-  // padding: 1rem 2rem;
-
-  min-height: 80vh;
+  min-height: 80%;
+  max-height: 90vh;
 
   @media (min-width: 62.5rem) {
     display: grid;
@@ -121,12 +119,22 @@ section.task-list {
   main {
     margin-top: 2rem;
     padding: 0 1rem;
+    max-height: 50vh;
+
+    @media (min-width: 62.5rem) {
+      max-height: 80vh;
+    }
 
     .tasks-container {
       padding: 1.5rem 0;
+      max-height: 50vh;
 
       display: flex;
       flex-direction: column;
+
+      @media (min-width: 62.5rem) {
+        max-height: 75vh;
+      }
 
       h2 {
         text-transform: uppercase;
@@ -143,6 +151,9 @@ section.task-list {
       }
 
       ul {
+        max-height: 100%;
+        overflow: auto;
+
         list-style: none;
 
         li {
@@ -152,6 +163,7 @@ section.task-list {
 
           margin-top: 1rem;
           padding: 1.125rem 1rem;
+          margin-right: 12px;
 
           border-radius: 8px;
 
@@ -309,6 +321,7 @@ section.task-list {
 
 .desktop-bg {
   background: var(--bg-light);
+  max-height: 90vh;
 }
 
 .profile-photo {

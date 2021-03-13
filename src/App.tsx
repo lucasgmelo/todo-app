@@ -30,10 +30,23 @@ export function App() {
     if (login) resetData();
   }, [login]);
 
+  useEffect(() => {
+    const userLocalStorage = localStorage.getItem("user");
+    const githubLocalStorage = localStorage.getItem("github");
+
+    if (userLocalStorage !== "") {
+      setUser(userLocalStorage);
+      setGithub(githubLocalStorage);
+      changeScreen();
+    }
+  }, []);
+
   return (
     <div className="container">
       {login ? (
         <Login
+          user={user}
+          github={github}
           changeScreen={changeScreen}
           getUser={getUser}
           getGithub={getGithub}
