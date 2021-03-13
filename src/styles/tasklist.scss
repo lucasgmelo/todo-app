@@ -1,10 +1,8 @@
 section.task-list {
   background: var(--bg-dark);
   border-radius: 0 0 8px 8px;
-
-  // padding: 1rem 2rem;
-
   min-height: 80vh;
+  max-height: 90vh;
 
   @media (min-width: 62.5rem) {
     display: grid;
@@ -121,9 +119,11 @@ section.task-list {
   main {
     margin-top: 2rem;
     padding: 0 1rem;
+    max-height: 80vh;
 
     .tasks-container {
       padding: 1.5rem 0;
+      max-height: 100%;
 
       display: flex;
       flex-direction: column;
@@ -143,6 +143,9 @@ section.task-list {
       }
 
       ul {
+        max-height: 100%;
+        overflow: auto;
+
         list-style: none;
 
         li {
@@ -309,6 +312,7 @@ section.task-list {
 
 .desktop-bg {
   background: var(--bg-light);
+  max-height: 90vh;
 }
 
 .profile-photo {
