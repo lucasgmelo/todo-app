@@ -115,7 +115,7 @@ export function TaskList(props: TaskListProps) {
         <div>
           {large && (
             <div className="profile-photo">
-              <img src={photo !== "" ? photo : "icons/profile.svg"} alt="" />
+              <img src={photo !== "" ? photo : "profile.svg"} alt="" />
             </div>
           )}
           <h1>Olá, {props.user}!</h1>
@@ -141,7 +141,7 @@ export function TaskList(props: TaskListProps) {
         </section>
         {large && (
           <footer>
-            <img src="icons/medium_logo.svg" alt="" />
+            <img src="medium_logo.svg" alt="" />
             <div>
               <strong>do it!</strong>
               <p>seu to do app favorito :)</p>

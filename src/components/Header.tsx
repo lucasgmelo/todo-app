@@ -9,11 +9,11 @@ export function Header(props: HeaderProps) {
     <header className="header">
       <div>
         <button type="button" onClick={props.changeScreen}>
-          <img src="icons/exit.svg" alt="Sair" />
+          <img src="exit.svg" alt="Sair" />
           <p>Sair</p>
         </button>
       </div>
-      <img src="icons/small_logo.svg" alt="Logo" />
+      <img src="small_logo.svg" alt="Logo" />
     </header>
   );
 }
