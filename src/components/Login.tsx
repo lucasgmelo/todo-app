@@ -5,6 +5,8 @@ interface LoginProps {
   changeScreen: () => void;
   getGithub: (myGithub: string) => void;
   getUser: (myUser: string) => void;
+  github: string;
+  user: string;
 }
 
 export default function Login(props: LoginProps) {
@@ -22,6 +24,8 @@ export default function Login(props: LoginProps) {
         onSubmit={(event) => {
           event.preventDefault();
           props.changeScreen();
+          localStorage.setItem("github", props.github);
+          localStorage.setItem("user", props.user);
         }}
       >
         <label htmlFor="user">Insira seu nome</label>

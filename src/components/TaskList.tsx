@@ -43,7 +43,18 @@ export function TaskList(props: TaskListProps) {
   };
 
   useEffect(() => {
+    getUser(props.github);
+    const tasksLocalStorage = JSON.parse(
+      localStorage.getItem(`${props.user}_tasks`)
+    );
+    if (tasksLocalStorage.length > 0) {
+      setTasks(tasksLocalStorage);
+    }
+  }, []);
+
+  useEffect(() => {
     getCompletedTasks();
+    localStorage.setItem(`${props.user}_tasks`, JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
@@ -63,10 +74,6 @@ export function TaskList(props: TaskListProps) {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    getUser(props.github);
-  }, []);
 
   function getCompletedTasks() {
     const tasksCompleted = tasks.filter((task) => task.isComplete !== false);
