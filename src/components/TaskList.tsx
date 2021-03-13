@@ -50,8 +50,8 @@ export function TaskList(props: TaskListProps) {
     setPercentual(getProgress(completedTasks.length, tasks.length));
   }, [handleToggleTaskCompletion]);
 
-  const getUser = async (user: string) => {
-    const res = await axios
+  const getUser = (user: string) => {
+    const res = axios
       .get(
         `
     https://api.github.com/users/${user}`
@@ -114,8 +114,8 @@ export function TaskList(props: TaskListProps) {
       <header className={large && "desktop-bg"}>
         <div>
           {large && (
-            <div>
-              <img src="icons/profile.svg" alt="" />
+            <div className="profile-photo">
+              <img src={photo !== "" ? photo : "icons/profile.svg"} alt="" />
             </div>
           )}
           <h1>Olá, {props.user}!</h1>
@@ -141,7 +141,7 @@ export function TaskList(props: TaskListProps) {
         </section>
         {large && (
           <footer>
-            <img src={photo} alt="" />
+            <img src="icons/medium_logo.svg" alt="" />
             <div>
               <strong>do it!</strong>
               <p>seu to do app favorito :)</p>

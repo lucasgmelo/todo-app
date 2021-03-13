@@ -1,10 +1,10 @@
-import axios from "axios";
-import { useEffect } from "react";
 import useMedia from "../hooks/useMedia";
 import "../styles/login.scss";
 
 interface LoginProps {
   changeScreen: () => void;
+  getGithub: (myGithub: string) => void;
+  getUser: (myUser: string) => void;
 }
 
 export default function Login(props: LoginProps) {
@@ -25,9 +25,22 @@ export default function Login(props: LoginProps) {
         }}
       >
         <label htmlFor="user">Insira seu nome</label>
-        <input required id="user" type="text" />
+        <input
+          required
+          id="user"
+          type="text"
+          onChange={(e) => {
+            props.getUser(e.target.value);
+          }}
+        />
         <label htmlFor="github">Github — opcional</label>
-        <input id="github" type="text" />
+        <input
+          id="github"
+          type="text"
+          onChange={(e) => {
+            props.getGithub(e.target.value);
+          }}
+        />
         <button type="submit">Continuar</button>
       </form>
     </div>

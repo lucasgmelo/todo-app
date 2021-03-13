@@ -310,3 +310,11 @@ section.task-list {
 .desktop-bg {
   background: var(--bg-light);
 }
+
+.profile-photo {
+  & > img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+}
